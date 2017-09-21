@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Framework\Data">
+      <UniqueIdentifier>{32255c3c-852e-42b8-8a10-a3c6fa1bcf0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Entities">
+      <UniqueIdentifier>{c9656c1a-5a07-4ee0-b1a1-a3189569aa37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Utility">
+      <UniqueIdentifier>{453e5439-9aed-40ec-b2c6-59b169c594e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\IO">
+      <UniqueIdentifier>{5012e7e2-b5d5-407b-8fdc-2cc32ceb7019}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Scene.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Data\AABB.cpp">
+      <Filter>Framework\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Data\Grid.cpp">
+      <Filter>Framework\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\IO\AudioService.cpp">
+      <Filter>Framework\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\IO\BinaryFile.cpp">
+      <Filter>Framework\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\IO\BinarySave.cpp">
+      <Filter>Framework\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\IO\GUI.cpp">
+      <Filter>Framework\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\IO\ImageManager.cpp">
+      <Filter>Framework\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\IO\MenuList.cpp">
+      <Filter>Framework\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\IO\Service.cpp">
+      <Filter>Framework\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Entities\Entity.cpp">
+      <Filter>Framework\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Entities\EntityComponents.cpp">
+      <Filter>Framework\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Utility\Random.cpp">
+      <Filter>Framework\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Utility\Utility.cpp">
+      <Filter>Framework\Utility</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MainScene.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Scene.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Data\AABB.h">
+      <Filter>Framework\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Data\Grid.h">
+      <Filter>Framework\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Data\Pair.h">
+      <Filter>Framework\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\IO\AudioService.h">
+      <Filter>Framework\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\IO\BinaryFile.h">
+      <Filter>Framework\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\IO\BinarySave.h">
+      <Filter>Framework\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\IO\GUI.h">
+      <Filter>Framework\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\IO\ImageManager.h">
+      <Filter>Framework\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\IO\MenuList.h">
+      <Filter>Framework\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\IO\Service.h">
+      <Filter>Framework\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Entities\Entity.h">
+      <Filter>Framework\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Entities\EntityComponents.h">
+      <Filter>Framework\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Utility\Random.h">
+      <Filter>Framework\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Utility\Utility.h">
+      <Filter>Framework\Utility</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
