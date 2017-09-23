@@ -144,6 +144,12 @@ void MainScene::Update(float dt)
 			_Window->setView(v);
 		}
 	}
+	if (GUI::DoButton(GenID, PairInt(_Window->getSize().x - 350,2), PairInt(160,32), "Zoom"))
+	{
+		sf::View v = _Window->getView();
+		v.setCenter(Min(_DragA._X, _DragB._X) + (Abs(_DragA._X - _DragB._X) / 2.f), Min(_DragA._Y, _DragB._Y) + (Abs(_DragA._Y - _DragB._Y) / 2.f));
+		_Window->setView(v);
+	}
 	if (GUI::DoButton(GenID, PairInt(_Window->getSize().x - 166, 2), PairInt(96, 32) , "Reset"))
 		_Window->setView(_DefaultView);
 	if (GUI::DoButton(GenID, PairInt(350, 2), PairInt(160, 32), "+ Frame"))
