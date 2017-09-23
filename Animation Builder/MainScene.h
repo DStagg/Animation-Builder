@@ -46,6 +46,7 @@ private:
 	bool _Dragging = false;
 	PairInt _DragA;
 	PairInt _DragB;
+	bool _DrawSelectionOutline = false;
 };
 
 bool GetLoadFile(std::string& name, std::string title, std::string startdir = "", const char* filter = "");

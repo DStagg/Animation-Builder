@@ -218,9 +218,15 @@ void MainScene::DrawScreen()
 		sf::RectangleShape rect;
 		rect.setPosition(origin._X, origin._Y);
 		rect.setSize(sf::Vector2f(size._X, size._Y));
-		rect.setFillColor(sf::Color(0, 0, 0, 0));
-		rect.setOutlineColor(sf::Color::Cyan);
-		rect.setOutlineThickness(1.f);
+		if (_DrawSelectionOutline)
+		{
+			rect.setFillColor(sf::Color(0, 0, 0, 0));
+			rect.setOutlineColor(sf::Color::Cyan);
+			rect.setOutlineThickness(1.f);
+		}
+		else
+			rect.setFillColor(sf::Color(255, 255, 0, 100));
+
 		_Window->draw(rect);
 
 
