@@ -268,10 +268,17 @@ void MainScene::DrawScreen()
 		}
 		else
 			rect.setFillColor(sf::Color(255, 255, 0, 100));
-
 		_Window->draw(rect);
 
-
+		sf::RectangleShape pixel;
+		sf::Vector2f world = _Window->mapPixelToCoords(sf::Mouse::getPosition(*_Window));
+		pixel.setPosition(floor(world.x), floor(world.y));
+		pixel.setSize(sf::Vector2f(1.f, 1.f));
+		//pixel.setOutlineColor(sf::Color::Red);
+		//pixel.setOutlineThickness(1.f);
+		//pixel.setFillColor(sf::Color(0, 0, 0, 0));
+		pixel.setFillColor(sf::Color(255, 0, 0, 100));
+		_Window->draw(pixel);
 	}
 
 

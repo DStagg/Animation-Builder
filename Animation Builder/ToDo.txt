@@ -1,2 +1,0 @@
-Draw the selection box outline thin even when zoomed
-Highlight the currently selected pixel
