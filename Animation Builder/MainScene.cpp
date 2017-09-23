@@ -73,6 +73,34 @@ void MainScene::Update(float dt)
 		{
 			if (Event.key.code == sf::Keyboard::BackSpace)
 				_Window->setView(_DefaultView);
+			else if (Event.key.code == sf::Keyboard::Up)
+			{
+				_DragA._Y -= 1;
+				_DragB._Y -= 1;
+			}
+			else if (Event.key.code == sf::Keyboard::Down)
+			{
+				_DragA._Y += 1;
+				_DragB._Y += 1;
+			}
+			else if (Event.key.code == sf::Keyboard::Left)
+			{
+				_DragA._X -= 1;
+				_DragB._X -= 1;
+			}
+			else if (Event.key.code == sf::Keyboard::Right)
+			{
+				_DragA._X += 1;
+				_DragB._X += 1;
+			}
+			else if (Event.key.code == sf::Keyboard::W)
+				_DragB._Y -= 1;
+			else if (Event.key.code == sf::Keyboard::S)
+				_DragB._Y += 1;
+			else if (Event.key.code == sf::Keyboard::A)
+				_DragB._X -= 1;
+			else if (Event.key.code == sf::Keyboard::D)
+				_DragB._X += 1;
 		}
 	}
 
