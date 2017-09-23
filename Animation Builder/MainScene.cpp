@@ -163,6 +163,16 @@ void MainScene::Update(float dt)
 		_CurrAnim._Frames.clear();
 		_AnimName = "";
 	}
+	if (GUI::DoButton(GenID, PairInt(718, 40), PairInt(160, 32), "Del Frame"))
+	{
+		if (_CurrFrame != -1)
+		{
+			_CurrAnim._Frames.erase(_CurrAnim._Frames.begin() + _CurrFrame);
+			_DragA.Set(0, 0);
+			_DragB.Set(0, 0);
+			_CurrFrame = -1;
+		}
+	}
 	
 	//	Side Bar Buttons
 	if (_CurrFrame != -1)
