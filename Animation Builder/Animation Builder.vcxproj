@@ -153,6 +153,9 @@
     <ClInclude Include="Framework\Utility\Utility.h" />
     <ClInclude Include="MainScene.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="ToDo.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

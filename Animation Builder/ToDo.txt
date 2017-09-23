@@ -1,0 +1,7 @@
+Shift the selection box using the keyboard
+Grow/shrink the selection box using the keyboard
+Add an option to draw the selection box as an overlay instead of an outline
+Draw the selection box outline thin even when zoomed
+Add a loop toggle option
+Bug fix: prevent crash when trying to preview when the sheet is loaded but not an animation
+Delete Frames
