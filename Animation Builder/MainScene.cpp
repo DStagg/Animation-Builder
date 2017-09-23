@@ -47,14 +47,12 @@ void MainScene::Update(float dt)
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Middle))
 			{
 				sf::View v = _Window->getView();
-				//sf::Vector2i newpos = _Window->mapCoordsToPixel(sf::Vector2f(sf::Mouse::getPosition(*_Window).x, sf::Mouse::getPosition(*_Window).y));
 				sf::Vector2i newpos = sf::Mouse::getPosition(*_Window);
 				v.move((float)(_OldMouse._X - newpos.x), (float)(_OldMouse._Y - newpos.y));
 				_Window->setView(v);
 			}
 			if ((_Loaded) && (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right)))
 			{
-				//sf::Vector2i newpos = _Window->mapCoordsToPixel(sf::Vector2f(sf::Mouse::getPosition(*_Window).x, sf::Mouse::getPosition(*_Window).y));
 				sf::Vector2i newpos = sf::Mouse::getPosition(*_Window);
 				PairInt move(_OldMouse._X - newpos.x, _OldMouse._Y - newpos.y);
 				_DragA.Set(_DragA._X - move._X, _DragA._Y - move._Y);
@@ -114,20 +112,14 @@ void MainScene::Update(float dt)
 		std::string name;
 		if (GetLoadFile(name, "Open", GetCurrDir()))
 		{
-			std::cout << "Opening: " << name << std::endl;
 			if (_Sheet.loadFromFile(name))
 			{
-				std::cout << "Loaded sheet succesfully." << std::endl;
 				_Sheet.setSmooth(false);
 				_Window->setView(_DefaultView);
 				_Loaded = true;
 				_SheetName = name.substr(name.find_last_of("/\\") + 1, std::string::npos);
 			}
-			else
-				std::cout << "Failed to load sheet." << std::endl;
 		}
-		else
-			std::cout << "Nothing Opened." << std::endl;
 	}
 	if (GUI::DoButton(GenID, PairInt(166, 2), PairInt(160, 32), "Close Sheet"))
 	{
@@ -156,7 +148,6 @@ void MainScene::Update(float dt)
 		_Window->setView(_DefaultView);
 	if (GUI::DoButton(GenID, PairInt(350, 2), PairInt(160, 32), "+ Frame"))
 	{
-		std::cout << "Save Frame" << std::endl;
 		_CurrAnim._Frames.push_back(AnimationFrame(Min(_DragA._X, _DragB._X), Min(_DragA._Y, _DragB._Y), Abs(_DragA._X - _DragB._X), Abs(_DragA._Y - _DragB._Y), 0.1f));
 		_CurrFrame = -1;
 	}
@@ -211,7 +202,6 @@ void MainScene::Update(float dt)
 	{
 		if (GUI::DoButton(GenID * ((i + 1) * 50), PairInt(_Window->getSize().x - (_SideBarWidth - 2), _TopBarHeight + 2 + (36*(i+1))), PairInt(_SideBarWidth - 4, 32), IntToString(i)))
 		{
-			std::cout << "Switch to frame : " << i << std::endl;
 			_DragA.Set(_CurrAnim._Frames[i]._X, _CurrAnim._Frames[i]._Y);
 			_DragB.Set(_CurrAnim._Frames[i]._X + _CurrAnim._Frames[i]._Width, _CurrAnim._Frames[i]._Y + _CurrAnim._Frames[i]._Height);
 			_CurrFrame = i;
@@ -242,7 +232,6 @@ void MainScene::Update(float dt)
 	if (!sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		_Dragging = false;
 
-	//sf::Vector2i newpos = _Window->mapCoordsToPixel(sf::Vector2f(sf::Mouse::getPosition(*_Window).x, sf::Mouse::getPosition(*_Window).y));
 	sf::Vector2i newpos = sf::Mouse::getPosition(*_Window);
 	_OldMouse.Set(newpos.x, newpos.y);
 	GUI::EndFrame();
@@ -274,9 +263,6 @@ void MainScene::DrawScreen()
 		sf::Vector2f world = _Window->mapPixelToCoords(sf::Mouse::getPosition(*_Window));
 		pixel.setPosition(floor(world.x), floor(world.y));
 		pixel.setSize(sf::Vector2f(1.f, 1.f));
-		//pixel.setOutlineColor(sf::Color::Red);
-		//pixel.setOutlineThickness(1.f);
-		//pixel.setFillColor(sf::Color(0, 0, 0, 0));
 		pixel.setFillColor(sf::Color(255, 0, 0, 100));
 		_Window->draw(pixel);
 	}
@@ -335,7 +321,7 @@ bool GetSaveFile(std::string& name, std::string title, std::string startdir, con
 	if (filter != "")
 	{
 		ofns.lpstrDefExt = ".anim";
-		ofns.lpstrFilter = filter;// "Animation\0*.anim\0\0";
+		ofns.lpstrFilter = filter;
 	}
 	ofns.Flags = OFN_OVERWRITEPROMPT | OFN_CREATEPROMPT;
 	ofns.lStructSize = sizeof(ofns);
@@ -361,7 +347,7 @@ bool GetLoadFile(std::string& name, std::string title, std::string startdir, con
 	OPENFILENAME ofns = { 0 };
 	if (filter != "")
 	{
-		ofns.lpstrFilter = filter;// "Animation\0*.anim\0\0";
+		ofns.lpstrFilter = filter;
 	}
 	ofns.Flags = OFN_OVERWRITEPROMPT | OFN_FILEMUSTEXIST;
 	ofns.lStructSize = sizeof(ofns);
