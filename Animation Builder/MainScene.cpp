@@ -203,11 +203,13 @@ void MainScene::Update(float dt)
 	}
 	
 	//	Side Bar Buttons
+	if (((int)_CurrAnim._Frames.size() > 0) && (GUI::DoButton(GenID, PairInt(_Window->getSize().x - (_SideBarWidth - 2), _TopBarHeight + 2), PairInt(_SideBarWidth - 4, 32), (_CurrAnim._Loop ? "Loop" : "Single" ))))
+		_CurrAnim._Loop = !_CurrAnim._Loop;
 	if (_CurrFrame != -1)
-		GUI::DoFrame(GenID, PairInt(_Window->getSize().x - _SideBarWidth, _TopBarHeight + 2 + (36 * _CurrFrame)), PairInt(_SideBarWidth, 32), sf::Color::Red);
+		GUI::DoFrame(GenID, PairInt(_Window->getSize().x - _SideBarWidth, _TopBarHeight + 2 + (36 * (_CurrFrame+1))), PairInt(_SideBarWidth, 32), sf::Color::Red);
 	for (int i = 0; i < (int)_CurrAnim._Frames.size(); i++)
 	{
-		if (GUI::DoButton(GenID * ((i + 1) * 50), PairInt(_Window->getSize().x - (_SideBarWidth - 2), _TopBarHeight + 2 + (36*i)), PairInt(_SideBarWidth - 4, 32), IntToString(i)))
+		if (GUI::DoButton(GenID * ((i + 1) * 50), PairInt(_Window->getSize().x - (_SideBarWidth - 2), _TopBarHeight + 2 + (36*(i+1))), PairInt(_SideBarWidth - 4, 32), IntToString(i)))
 		{
 			std::cout << "Switch to frame : " << i << std::endl;
 			_DragA.Set(_CurrAnim._Frames[i]._X, _CurrAnim._Frames[i]._Y);
@@ -215,8 +217,6 @@ void MainScene::Update(float dt)
 			_CurrFrame = i;
 		}
 	}
-
-
 
 	//	Drag selection box
 	if ((sf::Mouse::isButtonPressed(sf::Mouse::Left)) && (sf::Mouse::getPosition(*_Window).y >= (float)_TopBarHeight) && (sf::Mouse::getPosition(*_Window).x < _Window->getSize().x - (float)_SideBarWidth))
@@ -235,7 +235,6 @@ void MainScene::Update(float dt)
 		_CurrAnim.Play(dt);
 	else
 	{
-		_CurrAnim._Loop = true;
 		_CurrAnim._CurrentFrame = 0;
 		_CurrAnim._Time = 0.f;
 	}

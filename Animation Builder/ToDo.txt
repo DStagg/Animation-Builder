@@ -1,3 +1,2 @@
 Draw the selection box outline thin even when zoomed
-Add a loop toggle option
 Highlight the currently selected pixel
