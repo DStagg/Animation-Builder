@@ -38,6 +38,8 @@ void Animation::Play(float dt)
 
 AnimationFrame Animation::GetCurrFrame()
 {
+	if ((int)_Frames.size() == 0)
+		return AnimationFrame(0, 0, 1, 1, 1.f);
 	return _Frames[_CurrentFrame];
 };
 

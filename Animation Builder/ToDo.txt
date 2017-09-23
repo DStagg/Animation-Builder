@@ -2,6 +2,5 @@ Shift the selection box using the keyboard
 Grow/shrink the selection box using the keyboard
 Draw the selection box outline thin even when zoomed
 Add a loop toggle option
-Bug fix: prevent crash when trying to preview when the sheet is loaded but not an animation
 Delete Frames
 Display selection position and size on screen

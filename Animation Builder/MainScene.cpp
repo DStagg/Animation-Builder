@@ -158,6 +158,11 @@ void MainScene::Update(float dt)
 			_AnimName = name.substr(name.find_last_of("/\\") + 1, std::string::npos);
 		}
 	}
+	if (GUI::DoButton(GenID, PairInt(534, 40), PairInt(160, 32), "Clear Anim"))
+	{
+		_CurrAnim._Frames.clear();
+		_AnimName = "";
+	}
 	
 	//	Side Bar Buttons
 	if (_CurrFrame != -1)
