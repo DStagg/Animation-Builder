@@ -285,6 +285,12 @@ void MainScene::DrawScreen()
 		sheetname.setPosition(2.f, _Window->getSize().y - (7.f + sheetname.getLocalBounds().height));
 		_Window->draw(sheetname);
 
+		sf::Text selection;
+		selection.setFont(_Font);
+		selection.setString("[" + IntToString(Abs(_DragA._X - _DragB._X)) + "," + IntToString(Abs(_DragA._Y - _DragB._Y)) + "] at (" + IntToString(Min(_DragA._X, _DragB._X)) + "," + IntToString(Min(_DragA._Y, _DragB._Y)) + ")");
+		selection.setPosition(534.f, 2.f);
+		_Window->draw(selection);
+
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 		{
 			sf::RectangleShape background;

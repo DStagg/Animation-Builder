@@ -1,4 +1,3 @@
 Draw the selection box outline thin even when zoomed
 Add a loop toggle option
-Display selection position and size on screen
 Highlight the currently selected pixel
