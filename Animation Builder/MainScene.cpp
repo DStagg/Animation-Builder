@@ -11,10 +11,12 @@ MainScene::~MainScene()
 
 void MainScene::Begin()
 {
+	//	Setup GUI
 	_Font.loadFromFile("Roboto-Regular.ttf");
 	GUI::RegisterFont(_Font);
 	GUI::RegisterWindow(_Window);
 
+	//	Save camera view for sheet area
 	_DefaultView = _Window->getDefaultView();
 	_DefaultView.setCenter(_Window->getDefaultView().getCenter().x, _Window->getDefaultView().getCenter().y - _TopBarHeight);
 };
@@ -41,36 +43,46 @@ void MainScene::Update(float dt)
 			SetRunning(false);				
 		else if (Event.type == sf::Event::MouseMoved)
 		{
+			//	Update GUI Input
 			GUI::GetState()._MouseX = sf::Mouse::getPosition(*_Window).x;
 			GUI::GetState()._MouseY = sf::Mouse::getPosition(*_Window).y;
 
+			//	Pan Camera
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Middle))
 			{
+				float factor = _DefaultView.getSize().x / _Window->getView().getSize().x;
 				sf::View v = _Window->getView();
 				sf::Vector2i newpos = sf::Mouse::getPosition(*_Window);
-				v.move((float)(_OldMouse._X - newpos.x), (float)(_OldMouse._Y - newpos.y));
+				v.move((float)(_OldMouse._X - newpos.x) / factor, (float)(_OldMouse._Y - newpos.y) / factor);
 				_Window->setView(v);
 			}
+
+			//	Move Selection
 			if ((_Loaded) && (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right)))
 			{
+				float factor = _DefaultView.getSize().x / _Window->getView().getSize().x;
 				sf::Vector2i newpos = sf::Mouse::getPosition(*_Window);
-				PairInt move(_OldMouse._X - newpos.x, _OldMouse._Y - newpos.y);
+				PairInt move((_OldMouse._X - newpos.x) / (int)factor, (_OldMouse._Y - newpos.y) / (int)factor);
 				_DragA.Set(_DragA._X - move._X, _DragA._Y - move._Y);
 				_DragB.Set(_DragB._X - move._X, _DragB._Y - move._Y);
 			}
 		}
 		else if ((Event.type == sf::Event::MouseButtonPressed) && (Event.mouseButton.button == sf::Mouse::Left))
 		{
+			//	Update GUI Input
 			GUI::GetState()._MouseDown = true;
 		}
 		else if ((Event.type == sf::Event::MouseButtonReleased) && (Event.mouseButton.button == sf::Mouse::Left))
 		{
+			//	Update GUI Input
 			GUI::GetState()._MouseDown = false;
 		}
 		else if (Event.type == sf::Event::KeyPressed)
 		{
+			//	Reset Camera View
 			if (Event.key.code == sf::Keyboard::BackSpace)
 				_Window->setView(_DefaultView);
+			//	Fine-tune Selection Placement
 			else if (Event.key.code == sf::Keyboard::Up)
 			{
 				_DragA._Y -= 1;
@@ -91,6 +103,7 @@ void MainScene::Update(float dt)
 				_DragA._X += 1;
 				_DragB._X += 1;
 			}
+			//	Fine-tune Selection Size
 			else if (Event.key.code == sf::Keyboard::W)
 				_DragB._Y -= 1;
 			else if (Event.key.code == sf::Keyboard::S)
@@ -214,7 +227,7 @@ void MainScene::Update(float dt)
 		}
 	}
 
-	//	Drag selection box
+	//	Drag Selection
 	if ((sf::Mouse::isButtonPressed(sf::Mouse::Left)) && (sf::Mouse::getPosition(*_Window).y >= (float)_TopBarHeight) && (sf::Mouse::getPosition(*_Window).x < _Window->getSize().x - (float)_SideBarWidth))
 	{
 		if (!_Dragging)
@@ -226,7 +239,10 @@ void MainScene::Update(float dt)
 		sf::Vector2f pos = _Window->mapPixelToCoords(sf::Mouse::getPosition(*_Window));
 		_DragB.Set((int)pos.x, (int)pos.y);
 	}
+	if (!sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		_Dragging = false;
 
+	//	Preview Animation
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 		_CurrAnim.Play(dt);
 	else
@@ -235,11 +251,10 @@ void MainScene::Update(float dt)
 		_CurrAnim._Time = 0.f;
 	}
 
-	if (!sf::Mouse::isButtonPressed(sf::Mouse::Left))
-		_Dragging = false;
-
+	//	Store mouse position for next frame's panning
 	sf::Vector2i newpos = sf::Mouse::getPosition(*_Window);
 	_OldMouse.Set(newpos.x, newpos.y);
+
 	GUI::EndFrame();
 };
 void MainScene::DrawScreen()
